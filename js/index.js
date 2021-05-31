@@ -1,28 +1,35 @@
-/*const canvas = document.getElementById('canvas');
+const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
-let angIncrement = 0;
-let amplitude = 300;
-let period = 1;
-let xPositionSquare = 0;
+let xPositionSquare = 500;
 let yPositionSquare = 100;
 let xSpeedSquare = 4;
 let ySpeedSquare = 6;
-let squa = 150;
+let sq1 = 0;
+let sq2 = 150;
 
-function draw() {
-
+function draw(){ 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = 'violet';
-    ctx.fillRect(xPositionSquare,150, 60, 60);
 
-    if (xPositionSquare > canvas.width) {
-        xPositionSquare = 0;
+    //cuadrado
+    ctx.beginPath();
+    ctx.fillStyle = "blue";
+    ctx.fillRect(xPositionSquare, yPositionSquare, 150, 150);
+    ctx.closePath();
+
+    if(xPositionSquare > canvas.width - sq1 || xPositionSquare > canvas.width - sq2 || xPositionSquare < sq1) {
+        xSpeedSquare =- xSpeedSquare;
     }
-    xPositionSquare += 3;
-        
-    window.requestAnimationFrame(draw);
-}
+    if(yPositionSquare > canvas.height - sq1 || yPositionSquare > canvas.height - sq2 || yPositionSquare < sq1){
+        ySpeedSquare =- ySpeedSquare;;
+    }
+    xPositionSquare += xSpeedSquare;
+    yPositionSquare += ySpeedSquare;
 
+}
+/*draw();
+setInterval(draw, 10);*/
+function getRandomArbitrary(min, max) {
+    return Math.random() * (max - min) + min;
+}
 window.requestAnimationFrame(draw);
-*/
